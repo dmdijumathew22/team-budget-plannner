@@ -10,26 +10,20 @@ class Deal {
 }
 var myData = [new Deal(0, "Microsoft", "Appolo Project", "Mary", 1000),
 new Deal(1, "Intel", "Hermes project", "bob", 10000),
-new Deal(2, "Apple", "Zeus project", "Jane", 100000)
-
-]
-
-
+new Deal(2, "Apple", "Zeus project", "Jane", 100000)]
 
 var currentDealId = myData.length;
-
-
-
-// localstorage allows us to persist key value pairs in a way that would survive page refreshes, navigation, and user closing/reopening browser.
-// localstorage has limits to the size of each object stored.   
+ window.localStorage.setItem("myData", JSON.stringify(myData));
+//  window.localStorage allows us to persist key value pairs in a way that would survive page refreshes, navigation, and user closing/reopening browser.
+//  window.localStorage has limits to the size of each object stored.   
 
 
 function CreateTableFromJSON() {
 
-    $("tbody").empty()
-    localStorage.setItem("myData", JSON.stringify(myData));
+    $('tbody').empty()
+    // window.localStorage.setItem("myData", JSON.stringify(myData));
 
-    var myDataTest = JSON.parse(localStorage.getItem("myData"))
+    var myDataTest = JSON.parse( window.localStorage.getItem("myData"))
 
     $.each(myDataTest, function (key, value) {
         $('tbody').append(`<tr>
@@ -65,8 +59,8 @@ function InsertRow(dealId, clientName, projectName, projectManager, projectCost)
     var a = new Deal(dealId, clientName, projectName, projectManager, projectCost);
     myData.push(a);
     currentDealId++;
-    localStorage.clear();
-    //localStorage.setItem("myData", JSON.stringify(myData))
+     window.localStorage.clear();
+     window.localStorage.setItem("myData", JSON.stringify(myData))
     // $("tbody").empty()
     CreateTableFromJSON();
 
@@ -79,7 +73,7 @@ function DeleteRow(dealId) {
         if (myData[i].dealId === dealId) {
             if (confirm("Are you sure to delete Deal " + JSON.stringify(myData[i]))) {
                 myData.splice(i, 1);
-                localStorage.removeItem(myData[i]);
+                 window.localStorage.removeItem(myData[i]);
             } else {
 
                 break;

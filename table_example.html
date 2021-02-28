@@ -4,22 +4,22 @@
 <head>
     <title>Deals</title>
     <style>
-         #button {
-        /* ugly green background color, but it serves to show the area of 
+        #button {
+            /* ugly green background color, but it serves to show the area of 
            the button */
-        background-color: rgb(244, 250, 244);
-        
-        /* Setting the size of the button. Set only the width or the
+            background-color: rgb(244, 250, 244);
+
+            /* Setting the size of the button. Set only the width or the
            height, to prevent stretching the image */
-        width: 30px;
-            
-        /* By adding padding, we can change the position of the image 
+            width: 30px;
+
+            /* By adding padding, we can change the position of the image 
            inside the button */
-        padding-top: 70px;
-        padding-bottom: 80px;
-        padding-left: 50px;
-        padding-right: 50px;
-    }
+            padding-top: 70px;
+            padding-bottom: 80px;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
 
         th,
         td,
@@ -40,13 +40,21 @@
         th {
             font-weight: bold;
         }
+
+        label {
+            display: inline-block;
+            width: 140px;
+            text-align: right;
+        }
+
+        ​
     </style>
     <script src="create_table.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 
-<body  onload="CreateTableFromJSON()">
+<body onload="CreateTableFromJSON()">
     <table border="1">
         <thead>
             <tr>
@@ -55,20 +63,35 @@
                 <th>project_name</th>
                 <th>project_manager</th>
                 <th>project_cost</th>
+                <th>DELETE</th>
             </tr>
         </thead>
         <tbody id="body">
-            
+
         </tbody>
+    </table>
+    <div align="center"></div>
     <H3>Add New Deal</H3>
-    <p id="newData">
-        <label>Client Name</label><input type="text" id="clientNameInput" /><br />
-        <label>Project Name</label><input type="text" id="projectNameInput" /><br />
-        <label>Project Manager</label><input type="text" id="projectManagerInput" /><br />
-        <label>Project Cost</label><input type="number" id="projectCostInput" /><br />
-    </p>
+
+    <li><label>Client Name</label>
+        <input type="text" id="clientNameInput" />
+    </li>
+    <li> <label>Project Name</label>
+        <input type="text" id="projectNameInput" />
+    </li>
+    <li> <label>Project Manager</label>
+        <input type="text" id="projectManagerInput" />
+    </li>
+    <li><label>Project Cost</label>
+        <input type="number" id="projectCostInput" />
+    </li>
+
+    </div>
+
     <input type="button" onclick="AddNewDeal()" value="Save" />
 
     <a href="finance.html" target="_blank"><button>finance department</button></a>
 
 </body>
+
+</html>
