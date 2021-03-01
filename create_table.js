@@ -86,7 +86,8 @@ function DeleteRow(dealId) {
         if (parseInt(myData[i].dealId) === parseInt(dealId)) {
             if (confirm("Are you sure to delete Deal " + JSON.stringify(myData[i]))) {
                 myData.splice(i, 1);
-                localStorage.removeItem(myData[i]);
+                localStorage.removeItem("myData");
+                localStorage.setItem("myData",JSON.stringify(myData))
             } else {
 
                 break;
